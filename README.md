@@ -130,3 +130,22 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+## PostgreSQL y Redis para desarrollo local
+
+Copia `.env.example` a `.env` si este ultimo no existe. Docker Compose carga `.env` automaticamente.
+
+```bash
+docker compose up -d
+docker compose ps
+```
+
+PostgreSQL queda disponible en `localhost:5432` y Redis en `localhost:6379`, con contrasenas de desarrollo definidas en `.env`. Los datos persisten en volumenes de Docker.
+
+Para detener los servicios conservando los datos:
+
+```bash
+docker compose down
+```
+
+`.env` esta excluido de Git. `DATABASE_URL` y `REDIS_URL` se componen a partir de las demas variables. La aplicacion todavia no tiene clientes de PostgreSQL o Redis configurados.
